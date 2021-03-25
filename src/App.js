@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
     Link
@@ -54,7 +53,7 @@ function App() {
                 <Route path="/login">
                     <Login/>
                 </Route>
-                <Route exact path="/blog">
+                <Route exact path="/blog/:id">
                     <Blog/>
                 </Route>
                 <Route path="/blogpost">

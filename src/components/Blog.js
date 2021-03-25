@@ -1,12 +1,22 @@
 import React from "react";
+import {useParams} from "react-router-dom";
+import data from "../data/posts.json"
 
 function Blog() {
+    const {id} = useParams();
+    console.log("DATA:", data);
+    const posts = data.find(p => p.id === id);
+
     return (
-        <section>
-            <h1>Blog overzicht pagina</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl ex, euismod sit amet augue et,
-                placerat venenatis felis. Sed tempus finibus magna non mollis.</p>
-        </section>
+        <div className="App">
+            {posts && (
+                <>
+                    <h1>{posts.title}</h1>
+                    <div>{posts.date}</div>
+                    <p>{posts.content}</p>
+                </>
+            )}
+        </div>
     );
 }
 
