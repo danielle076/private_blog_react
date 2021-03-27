@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import {
     Switch,
     Route,
-    Link
+    Link,
+    Redirect,
 } from "react-router-dom";
 import './App.css';
 import Home from "./components/Home"
@@ -16,7 +17,6 @@ function App() {
 
     return (
         <>
-
             <nav>
                 <ul>
                     <li>
@@ -26,9 +26,10 @@ function App() {
             </nav>
             <nav>
                 <ul>
+                    {isAuthenticated === true &&
                     <li>
                         <Link to="/login">Login</Link>
-                    </li>
+                    </li>}
                 </ul>
             </nav>
             <nav>
@@ -51,7 +52,9 @@ function App() {
                     <Home/>
                 </Route>
                 <Route path="/login">
-                    <Login/>
+                    {isAuthenticated === true
+                        ?  <Login/>
+                        : <Redirect to="/"/>}
                 </Route>
                 <Route exact path="/blog/:id">
                     <Blog/>
